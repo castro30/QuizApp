@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.android.quizapp.MainActivity"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/HeaderTextStyle"
+            android:text="Basic Math Quiz"
+            />
+
+        <TextView
+            android:id="@+id/question_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="40dp"
+            android:text=" 9 * 9 ="
+            android:textSize="25sp" />
+
+        <CheckBox
+            style="@style/HeaderTextStyle"
+            android:id="@+id/answer1"
+            android:text="81"
+            android:padding="16dp"
+            />
+
+        <CheckBox
+            style="@style/HeaderTextStyle"
+            android:id="@+id/answer2"
+            android:padding="16dp"
+            android:text="72"/>
+
+        <CheckBox
+            style="@style/HeaderTextStyle"
+            android:id="@+id/answer3"
+            android:text="18"
+            android:padding="16dp"
+            />
+
+        <Button
+            style="@style/HeaderTextStyle"
+            android:text="Submit Answer"
+            android:padding="16dp"
+            android:onClick="submitAnswer"
+            />
+
+        <TextView
+            style="@style/HeaderTextStyle"
+            android:id="@+id/answer_field"
+            android:gravity="center_horizontal"
+            android:padding="40dp"
+            android:text=" "
+            />
+
+    </LinearLayout>
+</ScrollView>
