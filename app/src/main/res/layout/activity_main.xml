@@ -11,6 +11,15 @@
         tools:context="com.example.android.quizapp.MainActivity"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/name_field_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:inputType="textCapWords">
+
+        </EditText>
+
         <TextView
             style="@style/HeaderTextStyle"
             android:text="Basic Math Quiz"
@@ -25,20 +34,20 @@
             android:text=" 9 * 9 ="
             android:textSize="25sp" />
 
-        <CheckBox
+        <RadioButton
             style="@style/HeaderTextStyle"
             android:id="@+id/answer1"
             android:text="81"
             android:padding="16dp"
             />
 
-        <CheckBox
+        <RadioButton
             style="@style/HeaderTextStyle"
             android:id="@+id/answer2"
             android:padding="16dp"
             android:text="72"/>
 
-        <CheckBox
+        <RadioButton
             style="@style/HeaderTextStyle"
             android:id="@+id/answer3"
             android:text="18"
@@ -51,6 +60,13 @@
             android:padding="16dp"
             android:onClick="submitAnswer"
             />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/HeaderTextStyle"
+            android:id="@+id/endProgram"
+            android:text="Do you want to reset?"/>
 
         <TextView
             style="@style/HeaderTextStyle"

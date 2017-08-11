@@ -6,19 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import static android.R.id.message;
 import static com.example.android.quizapp.R.id.answer1;
+import static com.example.android.quizapp.R.id.answer2;
+import static com.example.android.quizapp.R.id.answer3;
 import static com.example.android.quizapp.R.id.answer_field;
 import static com.example.android.quizapp.R.id.question_field;
 
 public class MainActivity extends AppCompatActivity {
 
     int questionNumber = 1;
-    int wrongAnswers = 0;
+    int wrongAnswers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
     public void submitAnswer(View view) {
 
 
-        CheckBox answer1 = (CheckBox) findViewById(R.id.answer1);
+        RadioButton answer1 = (RadioButton) findViewById(R.id.answer1);
         boolean answer1Check = answer1.isChecked();
-        CheckBox answer2 = (CheckBox) findViewById(R.id.answer2);
+        RadioButton answer2 = (RadioButton) findViewById(R.id.answer2);
         boolean answer2Check = answer2.isChecked();
-        CheckBox answer3 = (CheckBox) findViewById(R.id.answer3);
+        RadioButton answer3 = (RadioButton) findViewById(R.id.answer3);
         boolean answer3Check = answer3.isChecked();
 
         oneAnswer(answer1Check, answer2Check, answer3Check);
@@ -59,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             displayAnswer(passFail(wrongAnswers));
         }
 
+
+
         nextQuestion();
 
 
@@ -73,92 +78,88 @@ public class MainActivity extends AppCompatActivity {
 
     //    Lets user know if they passed or failed
     private String passFail(int answer){
+        EditText nameTextField = (EditText) findViewById(R.id.name_field_view);
+        String nameText = nameTextField.getText().toString();
+
         if (answer>3){
             if (answer>5){
                 answer = 5;
-                return "You failed! You got "+answer+ " incorrect";
+                return nameText+", you failed! You got "+answer+ " incorrect";
             }
-            return "You failed! You got "+answer+ "incorrect";
+            return nameText+", you failed! You got "+answer+ " incorrect";
         }
         else{
-            return "You Passed! You got "+answer+" incorrect.";
+            return nameText+", you Passed! You got "+answer+" incorrect.";
         }
     }
 
     //    Places the next question and answers to the screen
     private void nextQuestion() {
+
+        TextView textView = (TextView) findViewById(R.id.question_field);
+        RadioButton answer1 = (RadioButton) findViewById(R.id.answer1);
+        RadioButton answer2 = (RadioButton) findViewById(R.id.answer2);
+        RadioButton answer3 = (RadioButton) findViewById(R.id.answer3);
+        CheckBox resetBox = (CheckBox) findViewById(R.id.endProgram);
+
+        if(resetBox.isChecked()){
+            textView.setText("9 * 9 = ");
+            answer1.setText("81");
+            answer2.setText("72");
+            answer3.setText("18");
+            questionNumber=1;
+            wrongAnswers=0;
+        }
+
         if (questionNumber == 2) {
-            TextView textView = (TextView) findViewById(R.id.question_field);
 
             textView.setText("8 * 8 = ");
 
-            CheckBox answer1 = (CheckBox) findViewById(R.id.answer1);
-
             answer1.setText("26");
 
-            CheckBox answer2 = (CheckBox) findViewById(R.id.answer2);
-
             answer2.setText("64");
-
-            CheckBox answer3 = (CheckBox) findViewById(R.id.answer3);
 
             answer3.setText("81");
 
         }
 
         if (questionNumber == 3) {
-            TextView textView = (TextView) findViewById(R.id.question_field);
 
             textView.setText("9 * 26 = ");
 
-            CheckBox answer1 = (CheckBox) findViewById(R.id.answer1);
-
             answer1.setText("234");
 
-            CheckBox answer2 = (CheckBox) findViewById(R.id.answer2);
-
             answer2.setText("68");
-
-            CheckBox answer3 = (CheckBox) findViewById(R.id.answer3);
 
             answer3.setText("13");
         }
 
         if (questionNumber == 4) {
-            TextView textView = (TextView) findViewById(R.id.question_field);
 
             textView.setText("125 * 26 = ");
 
-            CheckBox answer1 = (CheckBox) findViewById(R.id.answer1);
-
             answer1.setText("1475");
 
-            CheckBox answer2 = (CheckBox) findViewById(R.id.answer2);
-
             answer2.setText("3250");
-
-            CheckBox answer3 = (CheckBox) findViewById(R.id.answer3);
 
             answer3.setText("151");
         }
 
         if (questionNumber == 5) {
-            TextView textView = (TextView) findViewById(R.id.question_field);
 
             textView.setText("4 * 8 = ");
 
-            CheckBox answer1 = (CheckBox) findViewById(R.id.answer1);
-
             answer1.setText("75");
-
-            CheckBox answer2 = (CheckBox) findViewById(R.id.answer2);
 
             answer2.setText("18");
 
-            CheckBox answer3 = (CheckBox) findViewById(R.id.answer3);
-
             answer3.setText("32");
         }
+
+
+        answer1.setChecked(false);
+        answer2.setChecked(false);
+        answer3.setChecked(false);
     }
 
 //    Picks the correct answer
